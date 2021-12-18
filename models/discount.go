@@ -1,7 +1,7 @@
 package models
 
 type Discount struct {
-	Id int
+	DiscountId string
 	Amount int64
 	Code string
 	Description string

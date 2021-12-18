@@ -1,7 +1,7 @@
 package models
 
 type Sku struct {
-	Id int
+	SkuId string
 	Name string
 	Price int64
 	Type string
