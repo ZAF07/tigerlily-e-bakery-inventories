@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/tigerlily-e-bakery-server/api/router"
-	"github.com/tigerlily-e-bakery-server/pkg/env"
+	"github.com/tigerlily-e-bakery-server/internal/pkg/env"
 )
 
 func main() {
