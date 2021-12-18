@@ -22,6 +22,7 @@ func SetEnv() {
 	os.Setenv("dbName", dbName)
 	os.Setenv("dbPort", dbPort)
 	os.Setenv("dbSSL", dbSSL)
+	fmt.Println("DONE SETTING ENV")
 }
 
 func GetDBEnv() (dbString string) {
