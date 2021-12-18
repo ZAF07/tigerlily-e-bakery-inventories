@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/jinzhu/gorm"
@@ -14,11 +15,12 @@ type Db struct {
 	db *gorm.DB
 }
 
-func NewDB() (db *Db) {
+func NewDB() (*gorm.DB) {
 	connectDB()
-return &Db{
-	db: ORM,
-}
+	return ORM
+// return &Db{
+// 	db: ORM,
+// }
 }
 
 func connectDB() () {
@@ -27,6 +29,7 @@ func connectDB() () {
 	if err != nil {
 		log.Fatalf("Error connectiong to Database : %+v", err)
 	}
+	fmt.Println("SUCCEEDED CONNECTING TO DB")
 
 	ORM = db
 }

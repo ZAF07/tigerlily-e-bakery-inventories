@@ -8,7 +8,7 @@ CREATE TABLE skus (
   id serial,
   sku_id text,
   name text,
-  price decimal,
+  price NUMERIC(18,2),
   type text,
   description text,
   image_url text
@@ -62,5 +62,5 @@ INSERT INTO orders (order_id, sku_id, customer_id, discount_code) VALUES ('34444
 
 INSERT INTO carts (cart_id, sku_id, customer_id, discount_code) VALUES ('55555', '11221', '00022', 'discount2');
 
-INSERT INTO discounts (discount_id, amount, discount_code, description) VALUES ('99999', 1, discount1, 'Happy new year!');
-INSERT INTO discounts (discount_id, amount, discount_code, description) VALUES ('99900', .5, discount2, 'Christmas Eve');
+INSERT INTO discounts (discount_id, amount, discount_code, description) VALUES ('99999', 1, 'discount1', 'Happy new year!');
+INSERT INTO discounts (discount_id, amount, discount_code, description) VALUES ('99900', .5, 'discount2', 'Christmas Eve');
