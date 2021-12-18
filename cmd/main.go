@@ -5,9 +5,9 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/tigerlily-e-bakery-server/api/router"
-
 	"github.com/gin-gonic/gin"
+	"github.com/tigerlily-e-bakery-server/api/router"
+	"github.com/tigerlily-e-bakery-server/pkg/env"
 )
 
 func main() {
@@ -23,6 +23,10 @@ func main() {
 		Handler: h,
 	}
 
+	// Set ENV vars
+	env.SetEnv()
+
 	s.Serve(l)
+
 
 }
