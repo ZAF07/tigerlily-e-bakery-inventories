@@ -10,11 +10,12 @@ message GetAllInventoriesReq {
 };
 
 message Sku {
-  string name = 1 [json_name="product_name"];
-  double price = 2 [json_name="price"];
-  string type = 3 [json_name="type"];
-  string description = 4 [json_name="description"];
-  string image_url = 5 [json_name="image_url"];
+  string sku_id = 1 [json_name="sku_id"];
+  string name = 2 [json_name="product_name"];
+  double price = 3 [json_name="price"];
+  string type = 4 [json_name="type"];
+  string description = 5 [json_name="description"];
+  string image_url = 6 [json_name="image_url"];
 };
 
 message GetAllInventoriesResp {
