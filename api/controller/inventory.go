@@ -8,7 +8,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/tigerlily-e-bakery-server/internal/service"
+	"github.com/tigerlily-e-bakery-server/internal/service/inventory"
 	rpc "github.com/tigerlily-e-bakery-server/protos"
 )
 
@@ -30,7 +30,7 @@ func (a InventoryAPI) GetAllInventories(c *gin.Context) {
 		Offset: int32(offset),
 	}
 
-	service := service.NewInventoryService()
+	service := inventory.NewInventoryService()
 	fmt.Printf("service %+v", service)
 	ctx := context.Background()
 	resp, err := service.GetAllInventories(ctx, &req)
