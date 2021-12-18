@@ -7,7 +7,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/tigerlily-e-bakery-server/internal/db"
-	"github.com/tigerlily-e-bakery-server/internal/db/models"
+	rpc "github.com/tigerlily-e-bakery-server/protos"
 )
 
 type Service struct {
@@ -22,15 +22,18 @@ func NewInventoryService() *Service {
 	}
 }
 
-
-func (srv Service) GetAllInventories(ctx context.Context, req string) (inventory *[]models.Sku, err error) {
+func (srv Service) GetAllInventories(ctx context.Context, req *rpc.GetAllInventoriesReq) (resp *rpc.GetAllInventoriesResp, err error) {
 	fmt.Println("SERVICE LAYER")
 
-	i := []models.Sku{}
+	i := []*rpc.Sku{}
 
 	srv.db.Debug().Find(&i)
 	defer srv.db.Close()
-	fmt.Printf("DATA :  %+v", i)	
-	inventory = &i
+	fmt.Printf("DATA :  %+v", i)
+
+	resp = &rpc.GetAllInventoriesResp{
+		Inventories: i,
+	}
+
 	return
 }
