@@ -7,12 +7,24 @@ import (
 
 func Router(r *gin.Engine) *gin.Engine {
 
-	bakeryAPI := new(controller.BakeryAPI)
-	bakery := r.Group("bakery")
+	// Get all inventory
+
+	// Get all invetory by type
+
+	inventoryAPI := new(controller.InventoryAPI)
+	inventory := r.Group("inventory")
 	{
-		// bakery.GET("/", bakeryAPI.GetAllPastries)
-		bakery.GET("/inventory", bakeryAPI.GetAllPastries)
+		inventory.GET("/", inventoryAPI.GetAllInventories)
+		inventory.GET("/:type",inventoryAPI.GetInventoryByType)
 	}
+
+	// bakeryAPI := new(controller.BakeryAPI)
+	// bakery := r.Group("bakery")
+	// {
+	// 	// bakery.GET("/", bakeryAPI.GetAllPastries)
+	// 	bakery.GET("/inventory", bakeryAPI.GetAllPastries)
+		
+	// }
 
 	checkOut := r.Group("checkout")
 	checkoutAPI := new(controller.CheckoutAPI)
