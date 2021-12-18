@@ -18,14 +18,11 @@ type Db struct {
 func NewDB() (*gorm.DB) {
 	connectDB()
 	return ORM
-// return &Db{
-// 	db: ORM,
-// }
 }
 
 func connectDB() () {
-		dbString := env.GetDBEnv()
-		db, err := gorm.Open("postgres",  dbString)
+	
+		db, err := gorm.Open("postgres",  env.GetDBEnv())
 	if err != nil {
 		log.Fatalf("Error connectiong to Database : %+v", err)
 	}
