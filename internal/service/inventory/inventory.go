@@ -2,11 +2,11 @@ package inventory
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
 	"github.com/tigerlily-e-bakery-server/internal/repository/inventory"
 	rpc "github.com/tigerlily-e-bakery-server/protos"
 )
@@ -16,6 +16,7 @@ import (
 type Service struct {
 	db *gorm.DB
 	inventory inventory.InventoryRepo
+	logs logger.Logger
 }
 // We initialise a new repo instance at the same time we initialise the service layer
 // THE CONTROLLER SHOULD START THE DB INIT AND PASS THE INSTANCE TO SERVICE AND SERVICE TO REPO !!
@@ -25,15 +26,17 @@ func NewInventoryService(DB *gorm.DB) *Service {
 	return&Service{
 		db: DB,
 		inventory: *inventory.NewInventoryRepo(DB),
+		logs: *logger.NewLogger(),
 	}
 }
 
 func (srv Service) GetAllInventories(ctx context.Context, req *rpc.GetAllInventoriesReq) (resp *rpc.GetAllInventoriesResp, err error) {
-	fmt.Println("SERVICE LAYER")
+	srv.logs.InfoLogger.Println(" [SERVICE] GetAllInventories Running service layer")
 
 	// Init a repo instance (the repo should be tied to this service struct)
 	in, err := srv.inventory.GetAllInventories(req.Limit, req.Offset)
 	if err != nil {
+		srv.logs.ErrorLogger.Printf("Database Error : %+v", err)
 		log.Fatalf("Database err %+v", err)
 	}
 

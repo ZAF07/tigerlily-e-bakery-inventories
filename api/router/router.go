@@ -9,10 +9,11 @@ func Router(r *gin.Engine) *gin.Engine {
 
 	// Get all inventory
 	// Get all invetory by type
-	inventoryAPI := new(controller.InventoryAPI)
+	// inventoryAPI := new(controller.InventoryAPI)
+	inventoryAPI := controller.NewInventoryAPI()
 	inventory := r.Group("inventory")
 	{
-		inventory.GET("/", inventoryAPI.GetAllInventories)
+		inventory.GET("", inventoryAPI.GetAllInventories)
 		inventory.GET("/:type",inventoryAPI.GetInventoryByType)
 	}
 

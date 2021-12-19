@@ -8,26 +8,38 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/jinzhu/gorm"
+	"github.com/tigerlily-e-bakery-server/internal/db"
+	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
 	"github.com/tigerlily-e-bakery-server/internal/service/inventory"
 	rpc "github.com/tigerlily-e-bakery-server/protos"
-
-	"github.com/tigerlily-e-bakery-server/internal/db"
 )
 
-type InventoryAPI struct {}
+type InventoryAPI struct {
+	db *gorm.DB
+	logs logger.Logger
+}
+
+// Init the DB here (open a connection to the DB) and pass it along to service and repo layer
+func NewInventoryAPI() *InventoryAPI {
+	return &InventoryAPI{
+		db: db.NewDB(),
+		logs: *logger.NewLogger(),
+	}
+}
 
 func (a InventoryAPI) GetAllInventories(c *gin.Context) {
-	// Init the DB here (open a connection to the DB) and pass it along to service and repo layer
-	DB := db.NewDB()
+
+	a.logs.InfoLogger.Println(" [CONTROLLER] GetAllInventories Request recieved")
 
 	// Serialize and structure incoming data before handing them over to the service layer
 	limit , lErr := strconv.Atoi(c.Query("limit"))
 	if lErr != nil {
-		fmt.Printf("Error converting limit to int : %+v", lErr)
+		a.logs.ErrorLogger.Printf("Error converting limit query string to int %+v", lErr)
 	}
-		offset , oErr := strconv.Atoi(c.Query("offset"))
+	offset , oErr := strconv.Atoi(c.Query("offset"))
 	if oErr != nil {
-		fmt.Printf("Error converting offset to int : %+v", oErr)
+		a.logs.ErrorLogger.Printf("Error converting offset query string to int %+v", oErr)
 	}
 
 	// Construct the request object 
@@ -37,7 +49,7 @@ func (a InventoryAPI) GetAllInventories(c *gin.Context) {
 	}
 
 	// Init a new service instance passing the DB instance (service will pass this DB inatance to the repo layer later on)
-	service := inventory.NewInventoryService(DB)
+	service := inventory.NewInventoryService(a.db)
 	fmt.Printf("service %+v", service)
 	ctx := context.Background()
 	resp, err := service.GetAllInventories(ctx, &req)

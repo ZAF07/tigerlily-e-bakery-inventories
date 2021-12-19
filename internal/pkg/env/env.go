@@ -3,9 +3,15 @@ package env
 import (
 	"fmt"
 	"os"
+
+	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
 )
 
 func SetEnv() {
+
+	logs := logger.NewLogger()
+
+	logs.InfoLogger.Println("Setting ENV ... ")
 	serverENV := os.Args[1]
 	dbHost := os.Args[2]
 	dbUser := os.Args[3]
@@ -22,10 +28,12 @@ func SetEnv() {
 	os.Setenv("dbName", dbName)
 	os.Setenv("dbPort", dbPort)
 	os.Setenv("dbSSL", dbSSL)
-	fmt.Println("DONE SETTING ENV")
+	logs.InfoLogger.Println("DONE SETTING ENV")
+	// fmt.Println("DONE SETTING ENV")
 }
 
 func GetDBEnv() (dbString string) {
+	logs := logger.NewLogger()
 
 	env := os.Getenv("serverenv")
 	host := os.Getenv("dbHost")
@@ -37,13 +45,13 @@ func GetDBEnv() (dbString string) {
 
 	switch env {
 	case "PROD":
-		fmt.Println("DEVELOPMENT")
+		logs.InfoLogger.Println("RUNNING ON PRODUCTION MODE")
 
 		dbString = fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host, user, password, dbname, port, sslMode)
 		return
 	default:
+		logs.InfoLogger.Println("RUNNING ON DEVELOPMENT MODE")
 		dbString = fmt.Sprintf("host=%s user=%s dbname=%s port=%s sslmode=%s", host, user, dbname, port, sslMode)
 	}
-
 	return
 }
