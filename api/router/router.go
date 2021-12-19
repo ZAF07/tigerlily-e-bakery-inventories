@@ -1,11 +1,20 @@
 package router
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/tigerlily-e-bakery-server/api/controller"
 )
 
 func Router(r *gin.Engine) *gin.Engine {
+
+	// Set CORS config
+	r.Use(cors.New(cors.Config{
+		AllowCredentials: false,
+		AllowAllOrigins: true,
+		AllowMethods: []string{"GET", "POST", "PUT", "DELETE"},
+		AllowHeaders: []string{"Content-Type", "Content-Length", "Authorization", "accept", "origin", "Referer", "User-Agent"},
+	}))
 
 	// Get all inventory
 	// Get all invetory by type

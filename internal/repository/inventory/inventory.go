@@ -20,7 +20,8 @@ func NewInventoryRepo(db *gorm.DB) *InventoryRepo {
 }
 
 func (m InventoryRepo) GetAllInventories(limit, offset int32) (items []*models.Sku, err error) {
+	// m.db.Begin()
 	m.db.Debug().Find(&items)
-	defer m.db.Close()
+	// defer m.db.Close()
 	return
 }

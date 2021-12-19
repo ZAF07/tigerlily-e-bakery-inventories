@@ -26,3 +26,7 @@ func NewLogger() *Logger {
 		ErrorLogger: log.New(file, "[ERROR] ",log.Ldate|log.Ltime|log.Lshortfile),
 	}
 }
+
+// func (l Logger) ILogger(msg string) {
+// 	l.InfoLogger.Printf("%+v", msg)
+// }
