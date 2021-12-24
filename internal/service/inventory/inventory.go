@@ -21,8 +21,6 @@ type Service struct {
 // We initialise a new repo instance at the same time we initialise the service layer
 // THE CONTROLLER SHOULD START THE DB INIT AND PASS THE INSTANCE TO SERVICE AND SERVICE TO REPO !!
 func NewInventoryService(DB *gorm.DB) *Service {
-	// n := db.NewDB()
-
 	return&Service{
 		db: DB,
 		inventory: *inventory.NewInventoryRepo(DB),
