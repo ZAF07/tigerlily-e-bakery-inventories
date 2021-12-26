@@ -11,8 +11,8 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/tigerlily-e-bakery-server/internal/db"
 	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
+	rpc "github.com/tigerlily-e-bakery-server/internal/pkg/protos"
 	"github.com/tigerlily-e-bakery-server/internal/service/inventory"
-	rpc "github.com/tigerlily-e-bakery-server/protos"
 )
 
 type InventoryAPI struct {
