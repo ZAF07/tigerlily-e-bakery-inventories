@@ -3,7 +3,6 @@ package controller
 import (
 	"context"
 	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -34,15 +33,24 @@ func (a CheckoutAPI) Checkout(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&req)
 	if err != nil {
-		log.Fatalf("error binding req struct : %+v", err)
+		fmt.Printf("error binding req struct : %+v", err)
 	}
-	fmt.Printf("HERE : %+v", &req)
+	fmt.Printf("HERE : %+v", req.CheckoutItems[0])
 	ctx := context.Background()
 	service := checkout.NewCheckoutService(a.db)
 
+	// PROPERLY HANDLE ERROR FOR WHEN DB ERROR 
 	resp, err := service.Checkout(ctx, &req)
 	if err != nil {
 		a.logs.ErrorLogger.Println("[CONTROLLER] Error getting response")
+		a.logs.InfoLogger.Printf("[CONTROLLER] Status of resp value: %+v\n",resp)
+		c.JSON(http.StatusInternalServerError,
+		gin.H{
+		"message": "Error checkout",
+		"status": http.StatusInternalServerError,
+		"data": resp,
+	})
+	return
 	}
 
 	c.JSON(http.StatusOK,
