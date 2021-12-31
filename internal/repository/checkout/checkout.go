@@ -33,7 +33,7 @@ func (repo CheckoutRepo) CreateNewOrder(checkoutItems []*rpc.Checkout) (success 
 			}
 	
 			if err := tx.Create(&orderItem).Error; err != nil {
-				repo.logs.WarnLogger.Panicf("[REPO] Error batch creating order items : %+v", err)
+				repo.logs.WarnLogger.Printf("[REPO] Error batch creating order items : %+v", err)
 				success = false
 				return err
 			}
