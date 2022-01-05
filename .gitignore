@@ -16,3 +16,5 @@
 
 logs.txt
 sqlboiler.toml
+start_server.sh
+gen_sql_seed.sh
