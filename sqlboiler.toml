@@ -1,0 +1,55 @@
+output = "internal/models"
+wipe = true
+no-tests = true
+no-driver-templates = true
+no-context = true
+
+[psql]
+dbname = "tigerlily"
+user = "zaffere"
+host = "localhost"
+port = 5432
+pass = ""
+sslmode = "disable"
+
+[[types]]
+  [types.match]
+      type = "types.JSON"
+  [types.replace]
+      type = "datatypes.JSON"
+  [types.imports]
+      third_party = ['"gorm.io/datatypes"']
+
+[[types]]
+    [types.match]
+        type = "null.Time"
+
+    [types.replace]
+        type = "gorm.DeletedAt"
+    [types.imports]
+        third_party =['"gorm.io/gorm"']
+
+[[types]]
+  [types.match]
+      type = "int"
+
+  [types.replace]
+      type = "int32"
+
+[[types]]
+  [types.match]
+      type = "types.String"
+
+  [types.replace]
+      type = "String"
+
+
+[[types]]
+  [types.match]
+      type = "types.Decimal"
+
+  [types.replace]
+      type = "float64"      
+
+[imports.all]
+  standard = []

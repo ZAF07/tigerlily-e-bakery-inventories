@@ -1,0 +1,1 @@
+psql --username zaffere tigerlily < seed.sql

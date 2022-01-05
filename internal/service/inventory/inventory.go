@@ -43,8 +43,8 @@ func (srv Service) GetAllInventories(ctx context.Context, req *rpc.GetAllInvento
 		i = append(i, &rpc.Sku{
 			Name: sku.Name,
 			Price: sku.Price,
-			SkuId: sku.SkuId,
-			ImageUrl: sku.ImageUrl,
+			SkuId: sku.SkuID,
+			ImageUrl: sku.ImageURL,
 			Type: sku.Type,
 			Description: sku.Description,
 		})

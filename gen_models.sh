@@ -1,0 +1,1 @@
+sqlboiler psql --templates templates

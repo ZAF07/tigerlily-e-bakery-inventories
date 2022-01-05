@@ -5,62 +5,77 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS discounts;
 
 CREATE TABLE skus (
-  id serial,
-  sku_id text,
-  name text,
+  id serial PRIMARY KEY,
+  sku_id character varying NOT NULL,
+  name character varying NOT NULL,
   price NUMERIC(18,2),
-  type text,
-  description text,
-  image_url text
+  type character varying NOT NULL,
+  description character varying NOT NULL,
+  image_url character varying NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE,
+  updated_at TIMESTAMP WITHOUT TIME ZONE,
+  deleted_at TIMESTAMP WITHOUT TIME ZONE
 );
 
 CREATE TABLE orders (
-  id serial,
-  order_id text,
-  sku_id text,
-  customer_id text,
-  discount_code text
+  id serial PRIMARY KEY,
+  order_id character varying NOT NULL,
+  sku_id character varying NOT NULL,
+  customer_id character varying NOT NULL,
+  discount_code character varying NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE,
+  updated_at TIMESTAMP WITHOUT TIME ZONE,
+  deleted_at TIMESTAMP WITHOUT TIME ZONE
 );
 
 CREATE TABLE customers (
-  id serial,
-  customer_id text,
-  name text,
-  email text,
-  phone_number text
+  id serial PRIMARY KEY,
+  customer_id character varying NOT NULL,
+  name character varying NOT NULL,
+  email character varying NOT NULL,
+  phone_number character varying NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE,
+  updated_at TIMESTAMP WITHOUT TIME ZONE,
+  deleted_at TIMESTAMP WITHOUT TIME ZONE
 );
 
 CREATE TABLE carts (
-  id serial,
-  cart_id text,
-  sku_id text,
-  customer_id text,
-  discount_code text
+  id serial PRIMARY KEY,
+  cart_id character varying NOT NULL,
+  sku_id character varying NOT NULL,
+  customer_id character varying NOT NULL,
+  discount_code character varying NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE,
+  updated_at TIMESTAMP WITHOUT TIME ZONE,
+  deleted_at TIMESTAMP WITHOUT TIME ZONE
 );
 
 CREATE TABLE discounts (
-  id serial,
-  discount_id text,
+  id serial PRIMARY KEY,
+  discount_id character varying NOT NULL,
   amount decimal,
-  discount_code text,
-  description text
+  discount_code character varying NOT NULL,
+  description character varying NOT NULL,
+  created_at TIMESTAMP WITHOUT TIME ZONE,
+  updated_at TIMESTAMP WITHOUT TIME ZONE,
+  deleted_at TIMESTAMP WITHOUT TIME ZONE
 );
 
 -- FOR TYPE, I COULD USE PROTO ENUM AND MAP IT TO THE ITEM
 
-INSERT INTO skus(sku_id, name, price, type, description, image_url) VALUES ('11111', 'Egg Tart', 6.8, 'tart', 'Savoury egg tart', 'https://ec2-aws-s3bucket.com');
-INSERT INTO skus (sku_id, name, price, type, description, image_url) VALUES ('11222', 'Lemon Cake', 11.5, 'cake', 'Special day Lemon Cake', 'https://ec2-aws-s3bucket.com');
-INSERT INTO skus (sku_id, name, price, type, description, image_url) VALUES ('11221', 'Cheese Tart', 7.2, 'tart', 'Creamy Cheese tart', 'https://ec2-aws-s3bucket.com');
+INSERT INTO skus(sku_id, name, price, type, description, image_url, created_at, updated_at) VALUES ('11111', 'Egg Tart', 6.8, 'tart', 'Savoury egg tart', 'https://ec2-aws-s3bucket.com', NOW(), NOW());
+INSERT INTO skus (sku_id, name, price, type, description, image_url, created_at, updated_at) VALUES ('11222', 'Lemon Cake', 11.5, 'cake', 'Special day Lemon Cake', 'https://ec2-aws-s3bucket.com', NOW(), NOW());
+INSERT INTO skus (sku_id, name, price, type, description, image_url, created_at, updated_at) VALUES ('11221', 'Cheese Tart', 7.2, 'tart', 'Creamy Cheese tart', 'https://ec2-aws-s3bucket.com', NOW(), NOW());
 
-INSERT INTO customers (customer_id, name, email, phone_number) VALUES ('00000', 'Zaffere', 'zaf@mail.com', '97898788');
-INSERT INTO customers (customer_id, name, email, phone_number) VALUES ('00011', 'Timothy', 'timo@mail.com', '88735546');
-INSERT INTO customers (customer_id, name, email, phone_number) VALUES ('00022', 'Mary', 'mary@mail.com', '87934321');
+INSERT INTO customers (customer_id, name, email, phone_number, created_at, updated_at) VALUES ('00000', 'Zaffere', 'zaf@mail.com', '97898788', NOW(), NOW());
+INSERT INTO customers (customer_id, name, email, phone_number, created_at, updated_at) VALUES ('00011', 'Timothy', 'timo@mail.com', '88735546', NOW(), NOW());
+INSERT INTO customers (customer_id, name, email, phone_number, created_at, updated_at) VALUES ('00022', 'Mary', 'mary@mail.com', '87934321', NOW(), NOW());
 
-INSERT INTO orders (order_id, sku_id, customer_id, discount_code) VALUES ('33333', '11111', '00000', 'discount1');
-INSERT INTO orders (order_id, sku_id, customer_id, discount_code) VALUES ('33444', '11222', '00011', 'discount1');
-INSERT INTO orders (order_id, sku_id, customer_id, discount_code) VALUES ('34444', '11221', '00000', 'discount2');
+INSERT INTO orders (order_id, sku_id, customer_id, discount_code, created_at, updated_at) VALUES ('33333', '11111', '00000', 'discount1', NOW(), NOW());
+INSERT INTO orders (order_id, sku_id, customer_id, discount_code, created_at, updated_at) VALUES ('33444', '11222', '00011', 'discount1', NOW(), NOW());
+INSERT INTO orders (order_id, sku_id, customer_id, discount_code, created_at, updated_at) VALUES ('34444', '11221', '00000', 'discount2', NOW(), NOW());
 
-INSERT INTO carts (cart_id, sku_id, customer_id, discount_code) VALUES ('55555', '11221', '00022', 'discount2');
+INSERT INTO carts (cart_id, sku_id, customer_id, discount_code, created_at, updated_at) VALUES ('55555', '11221', '00022', 'discount2', NOW(), NOW());
 
-INSERT INTO discounts (discount_id, amount, discount_code, description) VALUES ('99999', 1, 'discount1', 'Happy new year!');
-INSERT INTO discounts (discount_id, amount, discount_code, description) VALUES ('99900', .5, 'discount2', 'Christmas Eve');
+INSERT INTO discounts (discount_id, amount, discount_code, description, created_at, updated_at) VALUES ('99999', 1, 'discount1', 'Happy new year!', NOW(), NOW());
+INSERT INTO discounts (discount_id, amount, discount_code, description, created_at, updated_at) VALUES ('99900', .5, 'discount2', 'Christmas Eve', NOW(), NOW());

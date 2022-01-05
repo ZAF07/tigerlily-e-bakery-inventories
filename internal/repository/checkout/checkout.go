@@ -3,7 +3,7 @@ package checkout
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/tigerlily-e-bakery-server/internal/db/models"
+	"github.com/tigerlily-e-bakery-server/internal/models"
 	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
 	rpc "github.com/tigerlily-e-bakery-server/internal/pkg/protos"
 )
@@ -32,7 +32,7 @@ func (repo CheckoutRepo) CreateNewOrder(checkoutItems []*rpc.Checkout) (success 
 				SkuID: item.SkuId,
 			}
 	
-			if err := tx.Create(&orderItem).Error; err != nil {
+			if err := tx.Debug().Omit("DeletedAt").Create(&orderItem).Error; err != nil {
 				repo.logs.WarnLogger.Printf("[REPO] Error batch creating order items : %+v", err)
 				success = false
 				return err

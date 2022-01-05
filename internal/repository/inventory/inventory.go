@@ -1,9 +1,11 @@
 package inventory
 
 import (
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/tigerlily-e-bakery-server/internal/db/models"
+	"github.com/tigerlily-e-bakery-server/internal/models"
 )
 
 // Create an interface to prevent unwanted use of these methods
@@ -19,9 +21,8 @@ func NewInventoryRepo(db *gorm.DB) *InventoryRepo {
 	}
 }
 
-func (m InventoryRepo) GetAllInventories(limit, offset int32) (items []*models.Sku, err error) {
-	// m.db.Begin()
+func (m InventoryRepo) GetAllInventories(limit, offset int32) (items []*models.Skus, err error) {
+	fmt.Println("HELLO?")
 	m.db.Debug().Find(&items)
-	// defer m.db.Close()
 	return
 }
