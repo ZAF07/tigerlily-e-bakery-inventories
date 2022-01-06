@@ -16,7 +16,7 @@ type Service struct {
 	base checkout.CheckoutRepo
 	logs logger.Logger
 }
-
+// hello
 func NewCheckoutService(DB *gorm.DB) *Service {
 	return&Service{
 		db: DB,
