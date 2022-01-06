@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/db"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
-	rpc "github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/protos"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/service/checkout"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/db"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
+	rpc "github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/protos"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/service/checkout"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 )

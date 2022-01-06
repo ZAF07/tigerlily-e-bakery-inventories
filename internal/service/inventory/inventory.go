@@ -4,9 +4,9 @@ import (
 	"context"
 	"log"
 
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
-	rpc "github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/protos"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/repository/inventory"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
+	rpc "github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/protos"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/repository/inventory"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )

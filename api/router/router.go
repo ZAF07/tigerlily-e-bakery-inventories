@@ -1,8 +1,8 @@
 package router
 
 import (
-	"github.com/ZAF07/tigerlily-e-bakery-server/api/controller"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/middleware"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/controller"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )

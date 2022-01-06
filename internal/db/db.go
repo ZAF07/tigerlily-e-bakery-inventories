@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/env"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/env"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )

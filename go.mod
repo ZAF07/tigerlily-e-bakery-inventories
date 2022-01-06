@@ -1,4 +1,4 @@
-module github.com/ZAF07/tigerlily-e-bakery-server
+module github.com/ZAF07/tigerlily-e-bakery-inventories
 
 go 1.17
 

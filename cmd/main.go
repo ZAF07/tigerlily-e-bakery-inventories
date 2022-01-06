@@ -5,10 +5,10 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/ZAF07/tigerlily-e-bakery-server/api/router"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/env"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/middleware"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/router"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/env"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )

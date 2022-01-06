@@ -1,9 +1,9 @@
 package checkout
 
 import (
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/models"
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
-	rpc "github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/protos"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/models"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
+	rpc "github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/protos"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )

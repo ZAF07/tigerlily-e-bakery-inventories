@@ -3,7 +3,7 @@ package inventory
 import (
 	"fmt"
 
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/models"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )

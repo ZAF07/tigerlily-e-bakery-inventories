@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
 )
 
 func SetEnv() {
