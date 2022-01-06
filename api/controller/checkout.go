@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/db"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
+	rpc "github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/protos"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/service/checkout"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
-	"github.com/tigerlily-e-bakery-server/internal/db"
-	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
-	rpc "github.com/tigerlily-e-bakery-server/internal/pkg/protos"
-	"github.com/tigerlily-e-bakery-server/internal/service/checkout"
 )
 
 type CheckoutAPI struct {

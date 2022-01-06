@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/env"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/tigerlily-e-bakery-server/internal/pkg/env"
-	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
 )
 
 var ORM *gorm.DB

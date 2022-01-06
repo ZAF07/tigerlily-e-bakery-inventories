@@ -3,16 +3,16 @@ package checkout_test
 import (
 	"testing"
 
-	"github.com/tigerlily-e-bakery-server/internal/db"
-	"github.com/tigerlily-e-bakery-server/internal/db/models"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/db"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/models"
 )
 
 
 func TestCreate(t *testing.T) {
-	orderItems := models.Order{
-		OrderId: "orderId",
-		SkuId: "skuid",
-		CustomerId: "customerId",
+	orderItems := &models.Order{
+		OrderID: "orderId",
+		SkuID: "skuid",
+		CustomerID: "customerId",
 		DiscountCode: "discountcode",
 	}
 	db := db.NewDB()

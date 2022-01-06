@@ -1,11 +1,11 @@
 package checkout
 
 import (
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/models"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
+	rpc "github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/protos"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/tigerlily-e-bakery-server/internal/models"
-	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
-	rpc "github.com/tigerlily-e-bakery-server/internal/pkg/protos"
 )
 
 type CheckoutRepo struct {

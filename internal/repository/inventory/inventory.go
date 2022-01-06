@@ -3,9 +3,9 @@ package inventory
 import (
 	"fmt"
 
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/tigerlily-e-bakery-server/internal/models"
 )
 
 // Create an interface to prevent unwanted use of these methods

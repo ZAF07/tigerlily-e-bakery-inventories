@@ -1,10 +1,10 @@
 package router
 
 import (
+	"github.com/ZAF07/tigerlily-e-bakery-server/api/controller"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/middleware"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/tigerlily-e-bakery-server/api/controller"
-	"github.com/tigerlily-e-bakery-server/internal/pkg/middleware"
 )
 
 func Router(r *gin.Engine) *gin.Engine {

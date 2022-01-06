@@ -4,11 +4,11 @@ import (
 	"context"
 	"log"
 
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/logger"
+	rpc "github.com/ZAF07/tigerlily-e-bakery-server/internal/pkg/protos"
+	"github.com/ZAF07/tigerlily-e-bakery-server/internal/repository/inventory"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/tigerlily-e-bakery-server/internal/pkg/logger"
-	rpc "github.com/tigerlily-e-bakery-server/internal/pkg/protos"
-	"github.com/tigerlily-e-bakery-server/internal/repository/inventory"
 )
 
 // Data structure representing the service layer. Down below we create methods for this struct to receive
