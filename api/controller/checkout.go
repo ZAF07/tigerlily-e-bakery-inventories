@@ -13,6 +13,8 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// hello
+
 type CheckoutAPI struct {
 	db *gorm.DB
 	logs logger.Logger
