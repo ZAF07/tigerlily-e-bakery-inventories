@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "protos/inventories.proto";
+
+package rpc;
+
+option go_package = "/rpc";
+
+service InventoryService {
+  rpc GetAllInventories(GetAllInventoriesReq) returns (GetAllInventoriesResp);
+}

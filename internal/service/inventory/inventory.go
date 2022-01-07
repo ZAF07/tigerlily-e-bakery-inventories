@@ -4,8 +4,8 @@ import (
 	"context"
 	"log"
 
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/rpc"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
-	rpc "github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/protos"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/repository/inventory"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -17,7 +17,12 @@ type Service struct {
 	db *gorm.DB
 	inventory inventory.InventoryRepo
 	logs logger.Logger
+	rpc.UnimplementedInventoryServiceServer
 }
+
+// This gurantees that Service struct implements the interface
+var _ rpc.InventoryServiceServer = (*Service)(nil)
+
 // We initialise a new repo instance at the same time we initialise the service layer
 // THE CONTROLLER SHOULD START THE DB INIT AND PASS THE INSTANCE TO SERVICE AND SERVICE TO REPO !!
 func NewInventoryService(DB *gorm.DB) *Service {

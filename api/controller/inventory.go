@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/rpc"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/db"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
-	rpc "github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/protos"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/service/inventory"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
