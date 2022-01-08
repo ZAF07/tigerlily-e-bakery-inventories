@@ -2,7 +2,6 @@ package checkout
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/rpc"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
@@ -15,8 +14,11 @@ type Service struct {
 	db *gorm.DB
 	base checkout.CheckoutRepo
 	logs logger.Logger
+	rpc.UnimplementedCheckoutServiceServer
 }
-// hello
+
+var _ rpc.CheckoutServiceServer = (*Service)(nil)
+
 func NewCheckoutService(DB *gorm.DB) *Service {
 	return&Service{
 		db: DB,
@@ -27,7 +29,6 @@ func NewCheckoutService(DB *gorm.DB) *Service {
 
 func (srv Service) Checkout(ctx context.Context, req *rpc.CheckoutReq) (resp *rpc.CheckoutResp, err error) {
 	srv.logs.InfoLogger.Printf(" [SERVICE] Checkout service ran %+v", req)
-	fmt.Printf("request : %+v", &req)
 
 	checkoutSuccess, err := srv.base.CreateNewOrder(req.CheckoutItems)
 	if err != nil {

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "protos/checkout.proto";
+
+package rpc;
+
+option go_package = "/rpc";
+
+service CheckoutService {
+  rpc Checkout(CheckoutReq) returns (CheckoutResp);
+}
