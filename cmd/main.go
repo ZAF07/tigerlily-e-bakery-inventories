@@ -12,7 +12,6 @@ import (
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/db"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/env"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
-	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/service/checkout"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/service/inventory"
 	"github.com/gin-gonic/gin"
 	"github.com/soheilhy/cmux"
@@ -93,7 +92,6 @@ func serveGRPC(l net.Listener) {
 
 	// Register GRPC stubs (pass the GRPCServer and the initialisation of the service layer)
 	rpc.RegisterInventoryServiceServer(grpcServer, inventory.NewInventoryService(db.NewDB()))
-	rpc.RegisterCheckoutServiceServer(grpcServer, checkout.NewCheckoutService(db.ORM))
 
 	if err := grpcServer.Serve(l); err != nil {
 		log.Fatalf("error running GRPC server %+v", err)

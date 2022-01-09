@@ -28,14 +28,6 @@ func Router(r *gin.Engine) *gin.Engine {
 	{
 		inventory.GET("", inventoryAPI.GetAllInventories)
 		inventory.GET("/:type",inventoryAPI.GetInventoryByType)
-
-
-		// Checkout API Endpoint
-		checkoutAPI := controller.NewCheckoutAPI()
-		checkOut := r.Group("checkout")
-		{
-			checkOut.POST("", checkoutAPI.Checkout)
-		}
 	
 		// Get user details and past pre-checkout cart item
 		cache := r.Group("cache")
