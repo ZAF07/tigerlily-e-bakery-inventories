@@ -79,7 +79,7 @@ func main() {
 	go serveGRPC(grpclistener)
 	go serveHTTP(httpListener)
 
-	fmt.Printf("Running@%v\n", lis.Addr())
+	fmt.Printf("Inventory Service Running@%v\n", lis.Addr())
 
 	if err := m.Serve(); !strings.Contains(err.Error(), "use of closed network connection") {
 		log.Fatalf("MUX ERR : %+v", err)
