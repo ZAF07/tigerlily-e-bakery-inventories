@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/rpc"
+	rpc "github.com/ZAF07/tigerlily-e-bakery-inventories/api/rpc"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/repository/inventory"
 	"github.com/jinzhu/gorm"
