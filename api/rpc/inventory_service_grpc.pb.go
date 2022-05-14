@@ -31,7 +31,7 @@ func NewInventoryServiceClient(cc grpc.ClientConnInterface) InventoryServiceClie
 
 func (c *inventoryServiceClient) GetAllInventories(ctx context.Context, in *GetAllInventoriesReq, opts ...grpc.CallOption) (*GetAllInventoriesResp, error) {
 	out := new(GetAllInventoriesResp)
-	err := c.cc.Invoke(ctx, "/rpc.InventoryService/GetAllInventories", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/inventory.InventoryService/GetAllInventories", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +76,7 @@ func _InventoryService_GetAllInventories_Handler(srv interface{}, ctx context.Co
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/rpc.InventoryService/GetAllInventories",
+		FullMethod: "/inventory.InventoryService/GetAllInventories",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(InventoryServiceServer).GetAllInventories(ctx, req.(*GetAllInventoriesReq))
@@ -88,7 +88,7 @@ func _InventoryService_GetAllInventories_Handler(srv interface{}, ctx context.Co
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var InventoryService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "rpc.InventoryService",
+	ServiceName: "inventory.InventoryService",
 	HandlerType: (*InventoryServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -97,5 +97,5 @@ var InventoryService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "protos/inventory_service.proto",
+	Metadata: "proto/inventory/inventory_service.proto",
 }
