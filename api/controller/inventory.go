@@ -2,7 +2,6 @@ package controller
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -50,7 +49,6 @@ func (a InventoryAPI) GetAllInventories(c *gin.Context) {
 
 	// Init a new service instance passing the DB instance (service will pass this DB inatance to the repo layer later on)
 	service := inventory.NewInventoryService(a.db)
-	fmt.Printf("service %+v", service)
 	ctx := context.Background()
 	resp, err := service.GetAllInventories(ctx, &req)
 	if err != nil {
