@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net"
@@ -59,10 +60,11 @@ func main() {
 	env.SetEnv()
 
 	// Spin up the main server instance
-	lis, err := net.Listen("tcp", ":8000")
+	var port = flag.String("port", ":8000", "Port to listen on")
+	lis, err := net.Listen("tcp", *port)
 	if err != nil {
 		logs.ErrorLogger.Println("Something went wrong in the server startup")
-		log.Fatalf("Error connecting tcp port 8000")
+		log.Fatalf("Error connecting tcp port %s", *port)
 	}
 	logs.InfoLogger.Println("Successfull server init")
 
@@ -73,7 +75,7 @@ func main() {
 	// If request headers don't specify HTTP, next mux would handle the request
 	httpListener := m.Match(cmux.HTTP1Fast())
 	grpclistener := m.Match(cmux.Any())
-	
+
 	// Run GO routine to run both servers at diff processes at the same time
 	go serveGRPC(grpclistener)
 	go serveHTTP(httpListener)
