@@ -64,9 +64,9 @@ CREATE TABLE discounts (
 
 -- FOR TYPE, I COULD USE PROTO ENUM AND MAP IT TO THE ITEM
 
-INSERT INTO skus(sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11111', 'Egg Tart', 6.8, 'tart', 'Savoury egg tart', 'https://ec2-aws-s3bucket.com', 3, NOW(), NOW());
-INSERT INTO skus (sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11222', 'Lemon Cake', 11.5, 'cake', 'Special day Lemon Cake', 'https://ec2-aws-s3bucket.com', 3, NOW(), NOW());
-INSERT INTO skus (sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11221', 'Cheese Tart', 7.2, 'tart', 'Creamy Cheese tart', 'https://ec2-aws-s3bucket.com', 3, NOW(), NOW());
+INSERT INTO skus(sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11111', 'Egg Tart', 6.8, 'tart', 'Savoury egg tart', '/static/media/egg_tart.2b76cc887213df167721.jpg', 3, NOW(), NOW());
+INSERT INTO skus (sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11222', 'Lemon Cake', 11.5, 'cake', 'Special day Lemon Cake', '/static/media/lemon_cake.b92a3bbc76e42f340359.jpg', 3, NOW(), NOW());
+INSERT INTO skus (sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11221', 'Cheese Tart', 7.2, 'tart', 'Creamy Cheese tart', '/static/media/cheese_tart.0d3c9f13d9aaa9b516a5.jpg', 3, NOW(), NOW());
 
 INSERT INTO customers (customer_id, name, email, phone_number, created_at, updated_at) VALUES ('00000', 'Zaffere', 'zaf@mail.com', '97898788', NOW(), NOW());
 INSERT INTO customers (customer_id, name, email, phone_number, created_at, updated_at) VALUES ('00011', 'Timothy', 'timo@mail.com', '88735546', NOW(), NOW());
