@@ -1,8 +1,6 @@
 package inventory
 
 import (
-	"fmt"
-
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -22,7 +20,6 @@ func NewInventoryRepo(db *gorm.DB) *InventoryRepo {
 }
 
 func (m InventoryRepo) GetAllInventories(limit, offset int32) (items []*models.Skus, err error) {
-	fmt.Println("HELLO?")
 	m.db.Debug().Find(&items)
 	return
 }
