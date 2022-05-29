@@ -12,6 +12,7 @@ CREATE TABLE skus (
   type character varying NOT NULL,
   description character varying NOT NULL,
   image_url character varying NOT NULL,
+  quantity INTEGER,
   created_at TIMESTAMP WITHOUT TIME ZONE,
   updated_at TIMESTAMP WITHOUT TIME ZONE,
   deleted_at TIMESTAMP WITHOUT TIME ZONE
@@ -63,9 +64,9 @@ CREATE TABLE discounts (
 
 -- FOR TYPE, I COULD USE PROTO ENUM AND MAP IT TO THE ITEM
 
-INSERT INTO skus(sku_id, name, price, type, description, image_url, created_at, updated_at) VALUES ('11111', 'Egg Tart', 6.8, 'tart', 'Savoury egg tart', 'https://ec2-aws-s3bucket.com', NOW(), NOW());
-INSERT INTO skus (sku_id, name, price, type, description, image_url, created_at, updated_at) VALUES ('11222', 'Lemon Cake', 11.5, 'cake', 'Special day Lemon Cake', 'https://ec2-aws-s3bucket.com', NOW(), NOW());
-INSERT INTO skus (sku_id, name, price, type, description, image_url, created_at, updated_at) VALUES ('11221', 'Cheese Tart', 7.2, 'tart', 'Creamy Cheese tart', 'https://ec2-aws-s3bucket.com', NOW(), NOW());
+INSERT INTO skus(sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11111', 'Egg Tart', 6.8, 'tart', 'Savoury egg tart', 'https://ec2-aws-s3bucket.com', 3, NOW(), NOW());
+INSERT INTO skus (sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11222', 'Lemon Cake', 11.5, 'cake', 'Special day Lemon Cake', 'https://ec2-aws-s3bucket.com', 3, NOW(), NOW());
+INSERT INTO skus (sku_id, name, price, type, description, image_url, quantity, created_at, updated_at) VALUES ('11221', 'Cheese Tart', 7.2, 'tart', 'Creamy Cheese tart', 'https://ec2-aws-s3bucket.com', 3, NOW(), NOW());
 
 INSERT INTO customers (customer_id, name, email, phone_number, created_at, updated_at) VALUES ('00000', 'Zaffere', 'zaf@mail.com', '97898788', NOW(), NOW());
 INSERT INTO customers (customer_id, name, email, phone_number, created_at, updated_at) VALUES ('00011', 'Timothy', 'timo@mail.com', '88735546', NOW(), NOW());

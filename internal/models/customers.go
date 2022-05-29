@@ -4,7 +4,15 @@
 package models
 
 import (
-	"time"
+	// "strconv"
+
+	// "github.com/friendsofgo/errors"
+	"github.com/volatiletech/null/v8"
+	// "github.com/volatiletech/sqlboiler/v4/boil"
+	// "github.com/volatiletech/sqlboiler/v4/queries"
+	// "github.com/volatiletech/sqlboiler/v4/queries/qm"
+	// "github.com/volatiletech/sqlboiler/v4/queries/qmhelper"
+	// "github.com/volatiletech/strmangle"
 )
 
 // Customer is an object representing the database table.
@@ -14,7 +22,7 @@ type Customer struct {
 	Name        string    `gorm:"column:name"`
 	Email       string    `gorm:"column:email"`
 	PhoneNumber string    `gorm:"column:phone_number"`
-	CreatedAt   time.Time `gorm:"column:created_at"`
-	UpdatedAt   time.Time `gorm:"column:updated_at"`
-	DeletedAt   time.Time `gorm:"column:deleted_at"`
+	CreatedAt   null.Time `gorm:"column:created_at"`
+	UpdatedAt   null.Time `gorm:"column:updated_at"`
+	DeletedAt   null.Time `gorm:"column:deleted_at"`
 }

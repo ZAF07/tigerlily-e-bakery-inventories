@@ -4,7 +4,16 @@
 package models
 
 import (
-	"time"
+	// "strconv"
+
+	// "github.com/friendsofgo/errors"
+	"github.com/volatiletech/null/v8"
+	// "github.com/volatiletech/sqlboiler/v4/boil"
+	// "github.com/volatiletech/sqlboiler/v4/queries"
+	// "github.com/volatiletech/sqlboiler/v4/queries/qm"
+	// "github.com/volatiletech/sqlboiler/v4/queries/qmhelper"
+	// "github.com/volatiletech/sqlboiler/v4/types"
+	// "github.com/volatiletech/strmangle"
 )
 
 // Skus is an object representing the database table.
@@ -16,7 +25,8 @@ type Skus struct {
 	Type        string            `gorm:"column:type"`
 	Description string            `gorm:"column:description"`
 	ImageURL    string            `gorm:"column:image_url"`
-	CreatedAt   time.Time         `gorm:"column:created_at"`
-	UpdatedAt   time.Time         `gorm:"column:updated_at"`
-	DeletedAt   time.Time         `gorm:"column:deleted_at"`
+	Quantity    null.Int          `gorm:"column:quantity"`
+	CreatedAt   null.Time         `gorm:"column:created_at"`
+	UpdatedAt   null.Time         `gorm:"column:updated_at"`
+	DeletedAt   null.Time         `gorm:"column:deleted_at"`
 }
