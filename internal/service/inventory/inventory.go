@@ -14,9 +14,9 @@ import (
 // Data structure representing the service layer. Down below we create methods for this struct to receive
 // This struct typically holds the repo layer instance, only made available to use after initialising the repo, passing in the DB instance first
 type Service struct {
-	db *gorm.DB
+	db        *gorm.DB
 	inventory inventory.InventoryRepo
-	logs logger.Logger
+	logs      logger.Logger
 	rpc.UnimplementedInventoryServiceServer
 }
 
@@ -26,10 +26,10 @@ var _ rpc.InventoryServiceServer = (*Service)(nil)
 // We initialise a new repo instance at the same time we initialise the service layer
 // THE CONTROLLER SHOULD START THE DB INIT AND PASS THE INSTANCE TO SERVICE AND SERVICE TO REPO !!
 func NewInventoryService(DB *gorm.DB) *Service {
-	return&Service{
-		db: DB,
+	return &Service{
+		db:        DB,
 		inventory: *inventory.NewInventoryRepo(DB),
-		logs: *logger.NewLogger(),
+		logs:      *logger.NewLogger(),
 	}
 }
 
@@ -46,11 +46,12 @@ func (srv Service) GetAllInventories(ctx context.Context, req *rpc.GetAllInvento
 	i := []*rpc.Sku{}
 	for _, sku := range in {
 		i = append(i, &rpc.Sku{
-			Name: sku.Name,
-			Price: sku.Price,
-			SkuId: sku.SkuID,
-			ImageUrl: sku.ImageURL,
-			Type: sku.Type,
+			Name:        sku.Name,
+			Price:       sku.Price,
+			SkuId:       sku.SkuID,
+			Quantity:    sku.Quantity,
+			ImageUrl:    sku.ImageURL,
+			Type:        sku.Type,
 			Description: sku.Description,
 		})
 	}
