@@ -25,7 +25,7 @@ type Skus struct {
 	Type        string            `gorm:"column:type"`
 	Description string            `gorm:"column:description"`
 	ImageURL    string            `gorm:"column:image_url"`
-	Quantity    null.Int          `gorm:"column:quantity"`
+	Quantity    int32          `gorm:"column:quantity"`
 	CreatedAt   null.Time         `gorm:"column:created_at"`
 	UpdatedAt   null.Time         `gorm:"column:updated_at"`
 	DeletedAt   null.Time         `gorm:"column:deleted_at"`
