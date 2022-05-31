@@ -8,5 +8,5 @@ Server for tigerlily-e-bakery
 
 <h2>User flow diagram</h2>
 
+![Tigerlily Project (1)](https://user-images.githubusercontent.com/61228520/171108925-ee16476a-a3d5-4ac0-9a4a-278455a95f93.png)
 
-https://user-images.githubusercontent.com/61228520/171108680-89930663-9c42-45ce-9f9c-fe8b011b899d.png
