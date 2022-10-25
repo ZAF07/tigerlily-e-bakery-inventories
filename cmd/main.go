@@ -90,9 +90,11 @@ func main() {
 
 // GRPC Server initialisation
 func serveGRPC(l net.Listener) {
+	// Create a new GRPC server instance
 	grpcServer := grpc.NewServer()
 
-	// Register GRPC stubs (pass the GRPCServer and the initialisation of the service layer)
+	// Register GRPC stubs (pass the GRPC server and the initialisation of the service layer)
+	// 💡 NOTE: To Register a GRPC service, we pass in the GRPC server and our client struct. This client struct is the service layer
 	rpc.RegisterInventoryServiceServer(grpcServer, inventory.NewInventoryService(db.NewDB()))
 
 	if err := grpcServer.Serve(l); err != nil {
