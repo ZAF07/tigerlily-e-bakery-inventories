@@ -2,7 +2,6 @@ package config
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"sync"
 
@@ -32,17 +31,12 @@ func applicationConfigLoader() func() *AppConfig {
 			flag.StringVar(&configFilePath, "config", "config.yml", "Path to config file")
 			flag.Parse()
 			config = parseAndWatchConfigFile(configFilePath)
-
-			fmt.Println("DO ONCE")
-
 		})
 		return config
 	}
 }
 
 func parseAndWatchConfigFile(filepath string) *AppConfig {
-
-	fmt.Println("YES DID RUN OONCE")
 
 	AppConfig := &AppConfig{}
 	generalConfig := &GeneralConfig{}
