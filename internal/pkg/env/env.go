@@ -7,6 +7,8 @@ import (
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
 )
 
+//  ❌ Not used at the moment
+
 func SetEnv() {
 
 	logs := logger.NewLogger()
@@ -19,7 +21,7 @@ func SetEnv() {
 	dbName := os.Args[5]
 	dbSSL := os.Args[6]
 	dbPort := os.Args[7]
-	
+
 	// port := strconv.Itoa(dbPort)
 	os.Setenv("serverenv", serverENV)
 	os.Setenv("dbHost", dbHost)

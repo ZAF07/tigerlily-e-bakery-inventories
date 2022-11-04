@@ -1,7 +1,6 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"net"
@@ -10,8 +9,8 @@ import (
 
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/router"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/rpc"
-	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/db"
-	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/env"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/config"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/injection"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/service/inventory"
 	"github.com/gin-gonic/gin"
@@ -23,15 +22,20 @@ func main() {
 	logs := logger.NewLogger()
 	logs.InfoLogger.Println("Starting up server ...")
 
+	// ❌ CURRENTLY NOT IN USE, USING VIPER TO GET CONFIG VALUES FROM YAML FILE
 	// Set ENV vars
-	env.SetEnv()
+	// env.SetEnv()
+
+	conf := config.InitConfig()
+
+	port := fmt.Sprintf(":%s", conf.GeneralConfig.AppPort)
 
 	// Spin up the main server instance
-	var port = flag.String("port", ":8000", "Port to listen on")
-	lis, err := net.Listen("tcp", *port)
+	// var port = flag.String("port", ":8000", "Port to listen on")
+	lis, err := net.Listen("tcp", port)
 	if err != nil {
 		logs.ErrorLogger.Println("Something went wrong in the server startup")
-		log.Fatalf("Error connecting tcp port %s", *port)
+		log.Fatalf("Error connecting tcp port %s", port)
 	}
 	logs.InfoLogger.Println("Successfull server init")
 
@@ -62,7 +66,8 @@ func serveGRPC(l net.Listener) {
 
 	// Register GRPC stubs (pass the GRPC server and the initialisation of the service layer)
 	// 💡 NOTE: To Register a GRPC service, we pass in the GRPC server and our client struct. This client struct is the service layer
-	rpc.RegisterInventoryServiceServer(grpcServer, inventory.NewInventoryService(db.NewDB()))
+	rpc.RegisterInventoryServiceServer(grpcServer, inventory.NewInventoryService(injection.GetPostgresDBInstance()))
+	// rpc.RegisterInventoryServiceServer(grpcServer, inventory.NewInventoryService(db.NewDB(injection.GetPostgresCredentials())))
 
 	if err := grpcServer.Serve(l); err != nil {
 		log.Fatalf("error running GRPC server %+v", err)

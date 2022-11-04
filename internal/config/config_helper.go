@@ -2,9 +2,11 @@ package config
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"sync"
 
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/db"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
@@ -12,6 +14,7 @@ import (
 //  loadConfig parses the configuration file, unmarshals it into the configuration struct, and returns the application config ...
 func loadConfig() (config *AppConfig) {
 	config = appConfigLoader()
+	initPostgres(config)
 	return
 }
 
@@ -29,12 +32,18 @@ func applicationConfigLoader() func() *AppConfig {
 			flag.StringVar(&configFilePath, "config", "config.yml", "Path to config file")
 			flag.Parse()
 			config = parseAndWatchConfigFile(configFilePath)
+
+			fmt.Println("DO ONCE")
+
 		})
 		return config
 	}
 }
 
 func parseAndWatchConfigFile(filepath string) *AppConfig {
+
+	fmt.Println("YES DID RUN OONCE")
+
 	AppConfig := &AppConfig{}
 	generalConfig := &GeneralConfig{}
 
@@ -57,4 +66,10 @@ func unmarshalConfig(config *GeneralConfig, v *viper.Viper) {
 	if err := v.Unmarshal(&config); err != nil {
 		log.Fatalf("[CONFIG] Error unmarshaling app config : %+v\n", err)
 	}
+}
+
+func initPostgres(appConfig *AppConfig) {
+	dbString := appConfig.GeneralConfig.PostgresDBCredentials.GetPostgresDBString()
+	db := db.NewDB(dbString)
+	appConfig.GeneralConfig.PostgresDB = db
 }
