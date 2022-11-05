@@ -8,19 +8,19 @@ package injection
 
 import (
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/config"
-	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/injection/file"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/injection/providers"
 	"github.com/jinzhu/gorm"
 )
 
 // Injectors from wire.go:
 
 func LoadGeneralConfig() *config.GeneralConfig {
-	generalConfig := file.GeneralConfigProvider()
+	generalConfig := providers.GeneralConfigProvider()
 	return generalConfig
 }
 
 func GetPostgresCredentials() string {
-	string2 := file.PostgresConnectionStringProvider()
+	string2 := providers.PostgresConnectionStringProvider()
 	return string2
 }
 

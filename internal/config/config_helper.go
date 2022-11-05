@@ -62,6 +62,7 @@ func unmarshalConfig(config *GeneralConfig, v *viper.Viper) {
 	}
 }
 
+// 🚨 THIS SHOULD NOT BE HERE IN CONFIG. MOVE TO APP.GO. THAT IS WHERE WE INIT ALL APP DEPENDENCIES
 func initPostgres(appConfig *AppConfig) {
 	dbString := appConfig.GeneralConfig.PostgresDBCredentials.GetPostgresDBString()
 	db := db.NewDB(dbString)
