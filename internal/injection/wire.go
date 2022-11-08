@@ -4,10 +4,10 @@
 package injection
 
 import (
+	"database/sql"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/config"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/injection/providers"
 	"github.com/google/wire"
-	"github.com/jinzhu/gorm"
 )
 
 func LoadGeneralConfig() *config.GeneralConfig {
@@ -17,9 +17,10 @@ func LoadGeneralConfig() *config.GeneralConfig {
 
 func GetPostgresCredentials() string {
 	wire.Build(providers.PostgresConnectionStringProvider)
-	return LoadGeneralConfig().PostgresDBCredentials.GetPostgresDBString()
+	return LoadGeneralConfig().PostgresConfig.GetPostgresDBString()
 }
 
-func GetPostgresDBInstance() *gorm.DB {
-	return LoadGeneralConfig().PostgresDB
+func GetPostgresDBInstance() *sql.DB {
+	wire.Build(providers.PostgresDBProvider)
+	return LoadGeneralConfig().GetPostgresDBInstance()
 }

@@ -9,6 +9,7 @@ import (
 
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/router"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/api/rpc"
+	"github.com/ZAF07/tigerlily-e-bakery-inventories/cmd/app"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/config"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/injection"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
@@ -27,6 +28,7 @@ func main() {
 	// env.SetEnv()
 
 	conf := config.InitConfig()
+	app.InitAppDependencies(conf)
 
 	port := fmt.Sprintf(":%s", conf.GeneralConfig.AppPort)
 

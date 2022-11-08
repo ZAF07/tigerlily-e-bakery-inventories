@@ -7,7 +7,7 @@ import (
 	// "strconv"
 
 	// "github.com/friendsofgo/errors"
-	"github.com/volatiletech/null/v8"
+		"github.com/volatiletech/null/v8"
 	// "github.com/volatiletech/sqlboiler/v4/boil"
 	// "github.com/volatiletech/sqlboiler/v4/queries"
 	// "github.com/volatiletech/sqlboiler/v4/queries/qm"
@@ -25,8 +25,8 @@ type Skus struct {
 	Type        string            `gorm:"column:type"`
 	Description string            `gorm:"column:description"`
 	ImageURL    string            `gorm:"column:image_url"`
-	Quantity    int32          `gorm:"column:quantity"`
-	CreatedAt   null.Time         `gorm:"column:created_at"`
+	Quantity    int32          `gorm:"column:quantity" json:"quan"`
+	CreatedAt   null.Time         `gorm:"column:created_at" `
 	UpdatedAt   null.Time         `gorm:"column:updated_at"`
 	DeletedAt   null.Time         `gorm:"column:deleted_at"`
 }

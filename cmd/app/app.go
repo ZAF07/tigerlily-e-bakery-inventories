@@ -7,10 +7,11 @@ import (
 
 func InitAppDependencies(config *config.AppConfig) {
 
-	initPostgres(config.GeneralConfig.PostgresDBCredentials.GetPostgresDBString(), config)
+	initPostgres(config.GeneralConfig.PostgresConfig.GetPostgresDBString(), config)
 }
 
 func initPostgres(dbConn string, appConfig *config.AppConfig) {
-	db := db.NewDB(dbConn)
+	db := db.NewPgDatabase(dbConn)
+
 	appConfig.GeneralConfig.PostgresDB = db
 }

@@ -1,6 +1,7 @@
 generate_wire:
 	@echo "~~ Generating wire from ~~~"
 	@wire ./internal/injection
+	@echo "✅ DONE GENERATING WIRE ✅"
 
 start: 
 	@echo "@@@@@@~~~~~~ Starting Inventories Service ~~~~~~@@@@@@"

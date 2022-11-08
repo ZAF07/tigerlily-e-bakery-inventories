@@ -9,10 +9,10 @@ CREATE TABLE skus (
   sku_id character varying NOT NULL,
   name character varying NOT NULL,
   price NUMERIC(18,2),
+  quantity INTEGER,
   type character varying NOT NULL,
   description character varying NOT NULL,
   image_url character varying NOT NULL,
-  quantity INTEGER,
   created_at TIMESTAMP WITHOUT TIME ZONE,
   updated_at TIMESTAMP WITHOUT TIME ZONE,
   deleted_at TIMESTAMP WITHOUT TIME ZONE

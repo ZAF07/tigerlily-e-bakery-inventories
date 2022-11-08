@@ -7,9 +7,9 @@
 package injection
 
 import (
+	"database/sql"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/config"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/injection/providers"
-	"github.com/jinzhu/gorm"
 )
 
 // Injectors from wire.go:
@@ -24,8 +24,7 @@ func GetPostgresCredentials() string {
 	return string2
 }
 
-// wire.go:
-
-func GetPostgresDBInstance() *gorm.DB {
-	return LoadGeneralConfig().PostgresDB
+func GetPostgresDBInstance() *sql.DB {
+	db := providers.PostgresDBProvider()
+	return db
 }

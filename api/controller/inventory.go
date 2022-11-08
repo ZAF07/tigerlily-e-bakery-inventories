@@ -2,6 +2,7 @@ package controller
 
 import (
 	"context"
+	"database/sql"
 	"log"
 	"net/http"
 	"strconv"
@@ -11,18 +12,16 @@ import (
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/pkg/logger"
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/service/inventory"
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
 )
 
 type InventoryAPI struct {
-	db   *gorm.DB
+	db   *sql.DB
 	logs logger.Logger
 }
 
 // Init the DB here (open a connection to the DB) and pass it along to service and repo layer
 func NewInventoryAPI() *InventoryAPI {
 	return &InventoryAPI{
-		// db:   db.NewDB(injection.GetPostgresCredentials()),
 		db:   injection.GetPostgresDBInstance(),
 		logs: *logger.NewLogger(),
 	}

@@ -1,8 +1,9 @@
 package providers
 
 import (
+	"database/sql"
+
 	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/config"
-	"github.com/jinzhu/gorm"
 )
 
 func ApplicationConfigProvider() *config.AppConfig {
@@ -14,9 +15,9 @@ func GeneralConfigProvider() *config.GeneralConfig {
 }
 
 func PostgresConnectionStringProvider() string {
-	return config.InitConfig().GeneralConfig.PostgresDBCredentials.GetPostgresDBString()
+	return config.InitConfig().GeneralConfig.PostgresConfig.GetPostgresDBString()
 }
 
-func PostgresDBProvider() *gorm.DB {
-	return config.InitConfig().GetPostgresDBInstance()
+func PostgresDBProvider() *sql.DB {
+	return config.InitConfig().GeneralConfig.GetPostgresDBInstance()
 }

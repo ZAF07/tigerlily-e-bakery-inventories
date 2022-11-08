@@ -5,7 +5,6 @@ import (
 	"log"
 	"sync"
 
-	"github.com/ZAF07/tigerlily-e-bakery-inventories/internal/db"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
@@ -13,7 +12,6 @@ import (
 //  loadConfig parses the configuration file, unmarshals it into the configuration struct, and returns the application config ...
 func loadConfig() (config *AppConfig) {
 	config = appConfigLoader()
-	initPostgres(config)
 	return
 }
 
@@ -60,11 +58,4 @@ func unmarshalConfig(config *GeneralConfig, v *viper.Viper) {
 	if err := v.Unmarshal(&config); err != nil {
 		log.Fatalf("[CONFIG] Error unmarshaling app config : %+v\n", err)
 	}
-}
-
-// 🚨 THIS SHOULD NOT BE HERE IN CONFIG. MOVE TO APP.GO. THAT IS WHERE WE INIT ALL APP DEPENDENCIES
-func initPostgres(appConfig *AppConfig) {
-	dbString := appConfig.GeneralConfig.PostgresDBCredentials.GetPostgresDBString()
-	db := db.NewDB(dbString)
-	appConfig.GeneralConfig.PostgresDB = db
 }

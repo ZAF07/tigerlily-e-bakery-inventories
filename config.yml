@@ -12,3 +12,4 @@ postgres_db:
   password: ""
   name: tigerlily
   ssl: disable
+  max_conns: 50
