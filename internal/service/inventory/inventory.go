@@ -39,7 +39,7 @@ func (srv Service) GetAllInventories(ctx context.Context, req *rpc.GetAllInvento
 	srv.logs.InfoLogger.Println(" [SERVICE] GetAllInventories Running service layer")
 
 	// Init a repo instance (the repo should be tied to this service struct)
-	in, err := srv.inventory.GetAllInventories(req.Limit, req.Offset)
+	in, err := srv.inventory.GetAllInventories(ctx, req.Limit, req.Offset)
 	if err != nil {
 		srv.logs.ErrorLogger.Printf("Database Error : %+v", err)
 		log.Fatalf("Database err %+v", err)

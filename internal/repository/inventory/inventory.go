@@ -23,9 +23,8 @@ func NewInventoryRepo(db *sql.DB) *InventoryRepo {
 	}
 }
 
-func (m InventoryRepo) GetAllInventories(limit, offset int32) (items []*models.Skus, err error) {
+func (m InventoryRepo) GetAllInventories(ctx context.Context, limit, offset int32) (items []*models.Skus, err error) {
 
-	ctx := context.Background()
 	d, cerr := m.db.Conn(ctx)
 	if cerr != nil {
 		err = cerr
