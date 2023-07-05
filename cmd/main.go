@@ -19,8 +19,6 @@ import (
 	"google.golang.org/grpc"
 )
 
-// Test
-
 func main() {
 	logs := logger.NewLogger()
 	logs.InfoLogger.Println("Starting up server ...")
